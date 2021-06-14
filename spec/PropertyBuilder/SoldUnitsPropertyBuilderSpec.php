@@ -15,9 +15,12 @@ namespace spec\BitBag\SyliusElasticsearchPlugin\PropertyBuilder;
 use BitBag\SyliusElasticsearchPlugin\PropertyBuilder\AbstractBuilder;
 use BitBag\SyliusElasticsearchPlugin\PropertyBuilder\PropertyBuilderInterface;
 use BitBag\SyliusElasticsearchPlugin\PropertyBuilder\SoldUnitsPropertyBuilder;
+use Elastica\Document;
 use BitBag\SyliusElasticsearchPlugin\Repository\OrderItemRepositoryInterface;
 use FOS\ElasticaBundle\Event\TransformEvent;
 use PhpSpec\ObjectBehavior;
+use Sylius\Component\Core\Model\ProductInterface;
+use Sylius\Component\Order\Repository\OrderItemRepositoryInterface;
 
 final class SoldUnitsPropertyBuilderSpec extends ObjectBehavior
 {
@@ -37,8 +40,11 @@ final class SoldUnitsPropertyBuilderSpec extends ObjectBehavior
         $this->shouldHaveType(PropertyBuilderInterface::class);
     }
 
-    function it_consumes_event(TransformEvent $event): void
+    function it_consumes_event(TransformEvent $event, ProductInterface $product, Document $document): void
     {
+        $event->getObject()->willReturn($product);
+        $event->getDocument()->willReturn($document);
+
         $this->consumeEvent($event);
     }
 }
