@@ -1,5 +1,5 @@
 {
-    "name": "bitbag/elasticsearch-plugin",
+    "name": "surrok/elasticsearch-plugin",
     "type": "sylius-plugin",
     "description": "BitBag Elasticsearch plugin for Sylius.",
     "license": "MIT",
