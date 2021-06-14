@@ -41,7 +41,6 @@
         "vimeo/psalm": "4.6.4"
     },
     "conflict": {
-        "api-platform/core": "^2.6",
         "symfony/symfony": "4.1.8",
         "symfony/browser-kit": "4.1.8",
         "symfony/dependency-injection": "4.1.8",
